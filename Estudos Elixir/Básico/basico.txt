@@ -1,0 +1,40 @@
+
+TIPO BÁSICOS
+   -Inteiros;
+   -float;
+   -Booleanos;
+   -átomos (uma constante cujo o nome é seu valor) ex: :foo = :foo = true;
+   -strings;
+
+OPERAÇÕES BÁSICAS
+   ARITMÉTICA
+
+      +, -, *, e / -> ( / sempre retornará um número ponto flutuante: 10/2 = 2.0)
+      div(10, 5) -> = 2 divisão inteira 
+      rem(10, 3) -> = 1 resto de divisão
+
+   BOOLEANOS
+
+      || , &&, !
+      -> and, or e not precisa que o primeiro argumento seja booleano (true, false)
+    
+   COMPARAÇÃO
+      ==, !=, ===, !==, <=, >=, < e >.
+      Para comparação de inteiros e pontos flutuantes usa-se ===:
+      2 == 2.0 -> true
+      2 === 2.0 -> false
+
+      No elixir qualquer tipo pode ser comparado. Ordem de classificação:
+         number < atom < reference < function < port < pid < tuple < map < list < bitstring
+         :hello > 999 -> true
+
+   INTERPOLAÇÃO DE STRINGS
+      name = "Débora"
+      "Hello #{name}" -> "Hello Débora"
+
+   CONCATENAÇÃO DE STRINGS
+      name = "Débora"
+      "Hello " <> name -> "Hello Débora"
+
+
+

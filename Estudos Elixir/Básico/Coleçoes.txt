@@ -1,0 +1,68 @@
+LISTAS   
+   [3.14, :pie, "Apple"]
+
+   Elixir implementa listas como listas encadeadas. é normalmente mais rápido inserir um elemento 
+   no início (prepending) do que no final (appending):
+
+      list = [3.14, :pie, "Apple"]
+      [3.14, :pie, "Apple"]
+
+      # Prepending (rápido)
+      ["π" | list]
+      ["π", 3.14, :pie, "Apple"]
+
+      # Appending (lento)
+      list ++ ["Cherry"]
+      [3.14, :pie, "Apple", "Cherry"]
+      
+   CONCATENAÇÃO DE DUAS listas
+      A concatenação de listas usa o operador ++
+      [1, 2] ++ [3, 4, 1] -> [1, 2, 3, 4, 1]
+
+   SUBTRAÇÃO DE listas
+      [1,2,2,3,2,3] -- [1,2,3,2] ->  [2, 3]
+
+      subtração de listas usa comparação estrita para match de valores. Por exemplo:
+      [2] -- [2.0] -> [2]
+      [2.0] -- [2.0] ->[]
+   TOPO/ CALDA
+      hd - TOPO: hd [3.14, :pie, "Apple"] -> 3.14
+      tl - calda: tl [3.14, :pie, "Apple"] -> [:pie, "Apple"]
+   
+TUPLAS
+As tuplas são similares às listas porém são armazenadas de maneira contígua em memória.
+a nova tupla deve ser armazenada inteira na memória.
+   {3.14, :pie, "Apple"}
+
+   É comum usar tuplas como um mecanismo que retorna informação adicional de funções;
+   a utilidade disso ficará mais aparente quando vermos pattern matching:
+
+      File.read("path/to/existing/file") -> {:ok, "... contents ..."}
+
+LISTAS DE PALAVRAS CHAVES E MAPAS 
+   No elixir, temos Mapas:
+   A partir do Elixir 1.2, variáveis são permitidas como chaves do mapa:
+
+   key = "hello" -> "hello"
+   %{key => "world"} -> %{"hello" => "world"}
+
+   Se um elemento duplicado é inserido no mapa, este sobrescreverá o valor anterior;
+
+   > map = %{:a => "one", :b => "two"} # = %{a: "one", b: "two"}
+   > map.a                             # = "one"
+   > map[:a]                           # = "one"
+
+   Outra propriedade interessante de mapas é que eles têm sua própria sintaxe 
+   para atualizar e acessar átomos como chaves:
+
+   map = %{foo: "bar", hello: "world"} -> %{foo: "bar", hello: "world"}
+   %{map | foo: "baz"} -> %{foo: "baz", hello: "world"}
+
+   Também temos listas de palavras-chave:
+
+   > kl = [a: "one", b: "two"]       # = [a: "one", b: "two"]
+   > kl2 = [{:a, "one"},{:b, "two"}] # = [a: "one", b: "two"]
+   > kl == kl2                       # = true
+   > kl[:a]                          # = "one"
+   > kl.a                            # = ** (ArgumentError)
+
